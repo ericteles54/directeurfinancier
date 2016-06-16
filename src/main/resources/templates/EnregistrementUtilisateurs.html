@@ -16,7 +16,42 @@
 	</head>
 	
 	<body>
-		<h1>Enregistrement des Utilisateurs</h1>
+			
+		<div class="panel panel-default" style="margin: 10px;">
+			<div class="panel-heading">
+				<h1 class="panel-title">Enregistrement des Utilisateurs</h1> 
+			</div>
+			
+			<div class="panel-body">
+				<form class="form-inline" method="post" th:object="${utilisateur}" th:action="@{/utilisateurs}" style="margin: 20px 0">
+					<div class="form-group">						
+						<input type="text" class="form-control" placeholder="Nom" th:field="*{nom}" />
+						<input type="password" class="form-control" placeholder="Mot de passe" th:field="*{motdepasse}" />
+						<input type="text" class="form-control" placeholder="Email" th:field="*{email}" />
+						<button type="submit" class="btn btn-primary">Ajouter</button>		
+					</div>
+				</form> 
+			
+			
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Mod de passe</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="utilisateur : ${utilisateurs}">
+							<td th:text="${utilisateur.id}"></td>
+							<td th:text="${utilisateur.nom}"></td>
+							<td th:text="${utilisateur.motdepasse}"></td>
+							<td th:text="${utilisateur.email}"></td>
+						</tr>
+					</tbody>					
+				</table>
+			</div>
+		</div>
 	</body>
-
 </html>
